@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
+  # resources :users, only: [:create, :show], :path => "/signup"
 
   resource :cart, only: [:show] do
     put    :add_item
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
   #Custom routes
 
   get  '/signup',  to: 'users#new'
+  resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

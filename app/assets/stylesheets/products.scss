@@ -85,4 +85,15 @@ main section.products-show {
   }
 }
 
+/* forms */
 
+input, textarea, select, .uneditable-input {
+  box-sizing: border-box;
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+input {
+  height: auto !important;
+}

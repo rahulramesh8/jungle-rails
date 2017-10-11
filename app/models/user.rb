@@ -8,5 +8,7 @@ class User < ActiveRecord::Base
                         format: { with: VALID_EMAIL_REGEX },
                         uniqueness: { case_sensitive: false}
 
+    #Creates a hashed password under the password_digest column in users
     has_secure_password
+    validates :password, presence: true, length: {minimum: 6}
 end

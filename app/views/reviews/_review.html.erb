@@ -1,0 +1,29 @@
+<div class="review">
+<!-- Commenter's Name -->
+<header>
+  <h><%= review.user.name%>:</h5>
+</header>
+
+<section>
+  <p><%= review.description%></p>
+
+  <p class="rating">
+    <%review.rating.times do %>
+      <%= fa_icon "star", class: 'fa-lg' %>
+    <%end%>
+    <%(5 - review.rating).times do %>
+      <%= fa_icon "star-o", class: 'fa-lg' %>
+    <%end%>
+  </p>
+
+</section>
+
+<!-- Delete Button For Current User's Reviews -->
+<%if current_user && current_user.id == review.user.id%>
+  <footer>
+    <%= link_to 'Delete', [@product, @review],
+             method: :delete,
+             data: { confirm: 'Are you sure you want to delete your review?' }, class: 'btn btn-danger', role: 'button' %>
+  </footer>
+<%end%>
+</div>

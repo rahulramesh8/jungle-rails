@@ -2,6 +2,22 @@
 
   <header class="page-header">
     <h1><%= link_to @product.category.name, @product.category %> &raquo; <%= @product.name %></h1>
+
+    <!-- Number of Reviews and Overall Rating -->
+    <a href="#list-reviews">
+      <h5 class="review-counter">View <%= @product.reviews.count%> Reviews</h5>
+    </a>
+    <% if @product.reviews.average(:rating) %>
+      <p class="overall-rating">
+        <%= @product.reviews.average(:rating).round(1)%>
+        <% @product.reviews.average(:rating).to_i.times do%>
+          <%= fa_icon "star", class: 'fa-lg' %>
+        <% end %>
+        <% (5 - @product.reviews.average(:rating).to_i).times do%>
+          <%= fa_icon "star-o", class: 'fa-lg' %>
+        <% end %>
+      </p>
+    <% end %>
   </header>
 
     <div class="row">
@@ -20,19 +36,22 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
-          <% if !@reviews.empty? %>
-          <dt>Reviews</dt>
-              <% @reviews.reverse_each do |review| %>
-                <dd><%= review.rating %></dd>
-                <dd><%= review.description %></dd>
-              <% end %>
-          <% end %>
         </dl>
       </div>
     </div>
       
-      <div>
-      <%= render partial: 'reviews' %>
-      </div>
+    <div>
+    <%= render partial: 'reviews' %>
+    </div>
+    
+    <div id = "list-reviews">
+      <% if !@reviews.empty? %>
+      <dt>Reviews</dt>
+          <% @reviews.reverse_each do |review| %>
+            <dd><%= review.rating %></dd>
+            <dd><%= review.description %></dd>
+          <% end %>
+      <% end %>
+    </div>
 
 </section>

@@ -21,6 +21,10 @@ end
 
 # Let's do this ...
 
+## USERS
+user1 = User.create!(email: "adsf@assd.com", password: "password123", password_confirmation: "password123")
+user2 = User.create!(email: "aasddddd@assd.com", password: "password123", password_confirmation: "password123")
+
 ## CATEGORIES
 
 puts "Finding or Creating Categories ..."
@@ -132,5 +136,57 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+## REVIEWS
+
+
+
+
+## REVIEWS
+
+puts "Creating Reviews for Products..."
+
+Review.destroy_all
+
+Review.create!({
+  product_id: 1,
+  user_id: 1,
+  description: Faker::Hipster.paragraph(2),
+  rating: 4
+  })
+
+Review.create!({
+  product_id: 2,
+  user_id: 1,
+  description: Faker::Hipster.paragraph(2),
+  rating: 7
+  })
+
+Review.create!({
+  product_id: 3,
+  user_id: 1,
+  description: Faker::Hipster.paragraph(2),
+  rating: 3
+  })
+
+Review.create!({
+  product_id: 4,
+  user_id: 1,
+  description: Faker::Hipster.paragraph(2),
+  rating: 8
+  })
+
+Review.create!({
+  product_id: 5,
+  user_id: 1,
+  description: Faker::Hipster.paragraph(2),
+  rating: 10
+  })
+
+Review.create!({
+  product_id: 6,
+  user_id: 1,
+  description: Faker::Hipster.paragraph(2),
+  rating: 2
+  })
 
 puts "DONE!"

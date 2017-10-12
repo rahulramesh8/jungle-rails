@@ -11,9 +11,15 @@
   <div class="panel panel-default products">
 
     <table class="table table-bordered">
-        <h2>Categories</h2>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+        </tr>
+      </thead>
+      <tbody>
         <%= render @categories %>
-
+      </tbody>
     </table>
 
   </div>

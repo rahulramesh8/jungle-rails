@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   resources :reviews
-  resources :reviews
-  resources :reviews
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

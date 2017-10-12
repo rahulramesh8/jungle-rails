@@ -45,7 +45,3 @@ Rails.application.configure do
   
   config.web_console.whitelisted_ips = ['10.0.2.0/24']
 end
-
-# LetterOpenerWeb.configure do |config|
-#   config.letters_location = Rails.root.join('app', 'assets', 'mails')
-# end

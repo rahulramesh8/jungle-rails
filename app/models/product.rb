@@ -11,4 +11,9 @@ class Product < ActiveRecord::Base
   validates :quantity, presence: true
   validates :category, presence: true
 
+  def new_review(review_params, user)
+    attributes = review_params
+    attributes.merge!(user: user)
+    self.reviews.new(attributes)
+  end
 end

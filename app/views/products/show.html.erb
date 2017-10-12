@@ -4,8 +4,6 @@
     <h1><%= link_to @product.category.name, @product.category %> &raquo; <%= @product.name %></h1>
   </header>
 
-  <article class="product-detail">
-
     <div class="row">
 
       <div class="col-sm-4">
@@ -22,17 +20,19 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
-            <dt>Reviews</dt>
-          <% @reviews.each do |review| %>
-            <dd>Rating: <%= review.rating %></dd>
-            <dd><%= review.description %></dd>
+          <% if !@reviews.empty? %>
+          <dt>Reviews</dt>
+              <% @reviews.each do |review| %>
+                <dd><%= review.rating %></dd>
+                <dd><%= review.description %></dd>
+              <% end %>
           <% end %>
         </dl>
       </div>
     </div>
-    <%= console %>
-  
 
-  </article>
+    <div class="products">
+    <%= render partial: 'reviews' %>
+    </div>
 
 </section>

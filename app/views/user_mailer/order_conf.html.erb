@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thank you for shopping with us!</h1>
+    <p>
+      Hello <%= (@user ? @user.name : '')%>,
+    </p>
+    <p>
+      Your order has been recieved and being processed.
+    </p>
+   <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @order.line_items.each do |item| %>
+        <tr>
+          <td>
+            <%= item.product.name %>
+          </td>
+          <td>
+            <%= item.item_price_cents %>
+          </td>
+          <td>
+            <%= item.quantity %>
+          </td>
+          <td>
+            <%= item.total_price_cents %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <p>TOTAL: <%= humanized_money_with_symbol @order.line_items.sum(:total_price_cents) %></p>
+    <p>Cheers!!</p>
+  </body>
+</html>

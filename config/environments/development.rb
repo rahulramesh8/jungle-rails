@@ -39,5 +39,8 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
+  #Setting the delivery method of email to letter-opener
+  config.action_mailer.delivery_method = ENV['USER'] == 'vagrant' ? :letter_opener_web : :letter_opener
+
   config.web_console.whitelisted_ips = ['10.0.2.0/24']
 end

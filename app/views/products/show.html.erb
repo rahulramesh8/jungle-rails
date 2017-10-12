@@ -22,7 +22,7 @@
           <dd><%= @product.price %></dd>
           <% if !@reviews.empty? %>
           <dt>Reviews</dt>
-              <% @reviews.each do |review| %>
+              <% @reviews.reverse_each do |review| %>
                 <dd><%= review.rating %></dd>
                 <dd><%= review.description %></dd>
               <% end %>
@@ -30,9 +30,9 @@
         </dl>
       </div>
     </div>
-
-    <div class="products">
-    <%= render partial: 'reviews' %>
-    </div>
+      
+      <div>
+      <%= render partial: 'reviews' %>
+      </div>
 
 </section>

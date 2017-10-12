@@ -4,6 +4,6 @@ class UserMailer < ApplicationMailer
     def order_conf(user, order)
         @order = order
         @user = user
-        mail(to: @order.email, subject: 'Conformation for order id #{@order.id}')
+        mail(to: @user.email, subject: 'Confirmation for order id #{@user.id}')
       end
 end

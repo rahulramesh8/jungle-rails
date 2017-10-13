@@ -21,6 +21,8 @@ end
 
 # Let's do this ...
 
+
+
 ## USERS
 user1 = User.create!(email: "adsf@assd.com", password: "password123", password_confirmation: "password123")
 user2 = User.create!(email: "aasddddd@assd.com", password: "password123", password_confirmation: "password123")
@@ -142,10 +144,10 @@ cat3.products.create!({
 
 
 ## REVIEWS
-
+Review.destroy_all
 puts "Creating Reviews for Products..."
 
-Review.destroy_all
+
 
 Review.create!({
   product_id: 1,
@@ -205,14 +207,14 @@ Review.create!({
 
 Review.create!({
   product_id: 9,
-  user_id: 3,
+  user_id: 1,
   description: Faker::Hipster.paragraph(2),
   rating: 5
 })
 
 Review.create!({
   product_id: 10,
-  user_id: 3,
+  user_id: 2,
   description: Faker::Hipster.paragraph(2),
   rating: 1
 })

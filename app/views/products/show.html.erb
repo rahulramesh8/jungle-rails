@@ -43,7 +43,7 @@
 
     <div class="row">
       <% if current_user %>
-        <div class="col-sm-8">
+        <div class="col-sm-6">
           <%= render partial: 'userreviews' %>
         </div>
       <% end %>
@@ -54,5 +54,5 @@
     <div id="product-reviews" class="row">
       <%= render @product.reviews.order('created_at DESC') %>
     </div>
-    
+
 </section>

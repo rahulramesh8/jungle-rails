@@ -22,7 +22,7 @@
 
 <%if current_user && current_user.id == review.user.id%>
   <footer>
-    <%= link_to 'Delete', [@product, @review],
+    <%= link_to 'Delete', [@product, review],
              method: :delete,
              data: { confirm: 'Sure you want to delete review?' }, class: 'btn btn-danger', role: 'button' %>
   </footer>

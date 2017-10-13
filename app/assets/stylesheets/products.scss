@@ -79,10 +79,12 @@ main section.categories-show {
 main section.products-show {
 
   .product-detail {
-    img.main-img {
-      max-width: 100%;
-    }
+    max-width: 100%;
   }
+  img.main-img {
+    max-width: 100%;
+  }
+  
 }
 
 

@@ -3,11 +3,13 @@
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
+  <%= console %>
+  
   <% if cart.present? == false %>
     <h2> Oops, looks like you have nothing in your cart! </h2>
     <h3><a href = "/"> Return to Home instead? </a></h3>
-  <%= console %>
   <% else %>
+
     <div class="panel panel-default items">
       <table class="table table-bordered">
         <thead>

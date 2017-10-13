@@ -7,8 +7,10 @@ class UsersController < ApplicationController
     if user.save
       session[:user_id] = user.id
       redirect_to '/'
+      flash.now[:success] = "Welcome to the Jungle"
     else
       redirect_to '/signup'
+      flash.now[:danger] = 'Invalid Signup - Use unique identifiers!'
     end
   end
 

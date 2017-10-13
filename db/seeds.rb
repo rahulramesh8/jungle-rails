@@ -24,8 +24,8 @@ end
 
 
 ## USERS
-user1 = User.create!(email: "adsf@assd.com", password: "password123", password_confirmation: "password123")
-user2 = User.create!(email: "aasddddd@assd.com", password: "password123", password_confirmation: "password123")
+user1 = User.create!(name: "Rob", email: "acd@assd.com", password: "password123", password_confirmation: "password123")
+user2 = User.create!(name: "John", email: "aasddddd@assd.com", password: "password123", password_confirmation: "password123")
 
 ## CATEGORIES
 

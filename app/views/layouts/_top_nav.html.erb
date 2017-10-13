@@ -30,10 +30,12 @@
 
         <li class = "LoginSignup">
           <% if current_user %>
-          Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
+            <button type="button" class="btn btn-success">User: <%= current_user.name %></button>
+            <span><a href="/logout" class="btn btn-danger" role="button">Logout</a></span>
+          
           <% else %>
-          <span><a href="/login" class="btn btn-link" role="button">Login</a></span>
-          <span><a href="/signup" class="btn btn-warning" role="button">Signup</a></span>
+            <span><a href="/login" class="btn btn-success" role="button">Login</a></span>
+            <span><a href="/signup" class="btn btn-warning" role="button">Signup</a></span>
           <% end %>
         </li>
 

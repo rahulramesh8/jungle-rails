@@ -18,6 +18,7 @@ RSpec.describe Product, type: :model do
     it "should have a valid product" do
       @product = @category.products.new(@sample_product)
       expect(@product.valid?).to be true
+      expect(@product.errors.full_messages).to be_empty
     end
 
     it "should raise error with a nil name field" do
@@ -42,7 +43,7 @@ RSpec.describe Product, type: :model do
     end
 
     it "should raise error with a nil category field" do
-      @product = Product.new(@sample_product)
+      @product = Pro duct.new(@sample_product)
       @product.save
       expect(@product.errors.full_messages).to include "Category can't be blank"
     end

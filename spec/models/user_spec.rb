@@ -8,7 +8,7 @@ RSpec.describe User, type: :model do
       @user_sample = {
           name:  'Rahul',
           email: 'Rahul70077@gmail.com',
-          password: 'hello123',
+          password: 'hello1234',
           password_confirmation: 'hello123'
       }
 

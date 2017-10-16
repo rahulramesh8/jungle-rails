@@ -2,18 +2,16 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
+  before :each do
+    @user_sample = {
+        name:  'Rahul',
+        email: 'rahul@gmail.com',
+        password: 'thepassword',
+        password_confirmation: 'thepassword'
+    }
+  end
+
   context "Validations" do
-
-    before :each do
-      @user_sample = {
-          name:  'Rahul',
-          email: 'Rahul70077@gmail.com',
-          password: 'hello1234',
-          password_confirmation: 'hello123'
-      }
-
-      @user = User.new(@user_sample)
-    end
     
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:email) }
@@ -28,5 +26,13 @@ RSpec.describe User, type: :model do
 
   end
 
+  context ".authenticate_with_credentials" do
+    it "should authenticate user with correct credentials" do
+      @user = User.new(@user_sample)
+      @user.save
+      puts "User sample #{@user_sample}"
+      expect(User.authenticate_with_credentials(@user_sample[:email], @user_sample[:password])).to eq(@user)
+    end
+  end
 
 end

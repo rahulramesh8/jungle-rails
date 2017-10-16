@@ -30,36 +30,26 @@ RSpec.describe Order, type: :model do
     it 'deducts quantity from products based on their line item quantities' do
       # TODO: Implement based on hints below
       # 1. initialize order with necessary fields (see orders_controllers, schema and model definition for what is required)
-      @order = Order.create!(
+      @order = Order.new(
         email: "john@hotmail.com",
         total_cents: 9000000,
         stripe_charge_id: "4111 1111 1111 1111"
       )
       # 2. build line items on @order
 
-      @line_item_1 = @order.line_items.create!(
+      @line_item_1 = @order.line_items.new(
         product: @product1,
         quantity: 1,
         item_price: @product1.price,
         total_price: @product1.price * 1
       )
-      @line_item_2 = @order.line_items.create!(
+      @line_item_2 = @order.line_items.new(
         product: @product2,
         quantity: 2,
         item_price: @product2.price,
         total_price: @product2.price * 2
       )
-   
-      @line_item_1.product.quantity -= 1
-      @line_item_1.save!
-      # @product1.quantity -= 1
-      @product1.save!
-
-      @line_item_2.product.quantity -= 2
-      @line_item_2.save!
-      # @product2.quantity -= 2
-      @product2.save!
-
+      @order.save!
       # 4. reload products to have their updated quantities
       @product1.reload
       @product2.reload

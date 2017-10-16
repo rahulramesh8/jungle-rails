@@ -32,7 +32,7 @@ RSpec.describe Product, type: :model do
       @sample_product[:price_cents] = nil
       @product = @category.products.new(@sample_product)
       @product.save
-      expect(@product.errors.full_messages).to include "Price can't be blank"
+      expect(@product.errors.full_messages).to include "Price cents is not a number"
     end
 
     it "should raise error with a nil quantity field" do
@@ -43,7 +43,7 @@ RSpec.describe Product, type: :model do
     end
 
     it "should raise error with a nil category field" do
-      @product = Pro duct.new(@sample_product)
+      @product = Product.new(@sample_product)
       @product.save
       expect(@product.errors.full_messages).to include "Category can't be blank"
     end

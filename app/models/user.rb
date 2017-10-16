@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
     validates :password, length: {minimum: 5}
 
     def self.authenticate_with_credentials(email, password)
-        # email = email.to_s.strip
+        email = email.to_s.strip
         puts "Email is: #{email}"
         user = User.where("email = ?", email.downcase).first
         puts "User in model is #{user}"

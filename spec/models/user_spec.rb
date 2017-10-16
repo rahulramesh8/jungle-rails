@@ -30,7 +30,6 @@ RSpec.describe User, type: :model do
     it "should authenticate user with correct credentials" do
       @user = User.new(@user_sample)
       @user.save
-      puts "User sample #{@user_sample}"
       expect(User.authenticate_with_credentials(@user_sample[:email], @user_sample[:password])).to eq(@user)
     end
   end

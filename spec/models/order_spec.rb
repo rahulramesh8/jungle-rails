@@ -49,11 +49,17 @@ RSpec.describe Order, type: :model do
         item_price: @product2.price,
         total_price: @product2.price * 2
       )
-      # 3. save! the order - ie raise an exception if it fails (not expected)
-      
-      # @order.save!
-      # expect(@order.errors.full_messages).to include "Order did not save"
-      
+   
+      @line_item_1.product.quantity -= 1
+      @line_item_1.save!
+      # @product1.quantity -= 1
+      @product1.save!
+
+      @line_item_2.product.quantity -= 2
+      @line_item_2.save!
+      # @product2.quantity -= 2
+      @product2.save!
+
       # 4. reload products to have their updated quantities
       @product1.reload
       @product2.reload
@@ -62,8 +68,8 @@ RSpec.describe Order, type: :model do
       expect(@product2.quantity).to eq(53)
     end
     # pending test 2
-    xit 'does not deduct quantity from products that are not in the order' do
-      # TODO: Implement based on hints in previous test
+    it 'does not deduct quantity from products that are not in the order' do
+      expect(@product3.quantity).to eq(14)
     end
   end
 end

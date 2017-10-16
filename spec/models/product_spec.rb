@@ -3,22 +3,51 @@ require 'rails_helper'
 RSpec.describe Product, type: :model do
 
   context 'Validations' do
-    it {is_expected.to validate_presence_of (:name)}
-    it {is_expected.to validate_presence_of (:price)}
-    it {is_expected.to validate_presence_of (:quantity)}
-    it {is_expected.to validate_presence_of (:category)}
-  end
 
-  context "Relationships" do
     before :each do
-      @category = FactoryGirl.build(:category)
-      @product = FactoryGirl.build(:product)
+      @category = Category.new(name: "Mobile Phones")
+
+      @sample_product = {
+        name: "IPhone X",
+        description: "New IPhone with fancy gimmicks that nobody really needs.",
+        price_cents: 5000,
+        quantity: 45
+      }
     end
 
-    it "Should belong to Category" do
-      @product.category = @category
-      expect(@product.category).to eq(@category)
+    it "should have a valid product" do
+      @product = @category.products.new(@sample_product)
+      expect(@product.valid?).to be true
+    end
+
+    it "should raise error with a nil name field" do
+      @sample_product[:name] = nil
+      @product = @category.products.new(@sample_product)
+      @product.save
+      expect(@product.errors.full_messages).to include "Name can't be blank"
+    end
+
+    it "should raise error with a nil price field" do
+      @sample_product[:price_cents] = nil
+      @product = @category.products.new(@sample_product)
+      @product.save
+      expect(@product.errors.full_messages).to include "Price can't be blank"
+    end
+
+    it "should raise error with a nil quantity field" do
+      @sample_product[:quantity] = nil
+      @product = @category.products.new(@sample_product)
+      @product.save
+      expect(@product.errors.full_messages).to include "Quantity can't be blank"
+    end
+
+    it "should raise error with a nil category field" do
+      @product = Product.new(@sample_product)
+      @product.save
+      expect(@product.errors.full_messages).to include "Category can't be blank"
     end
 
   end
+
+
 end

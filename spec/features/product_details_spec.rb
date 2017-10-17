@@ -1,29 +1,25 @@
 require 'rails_helper'
 
-RSpec.feature "Visitor navigates from home to product details page", type: :feature, js: true do
+RSpec.feature "User goes to product page", type: :feature, js: true do
 
-  # SETUP
   before :each do
     @category = Category.create! name: 'Apparel'
 
-    10.times do |n|
-      @category.products.create!(
-        name:  Faker::Hipster.sentence(3),
-        description: Faker::Hipster.paragraph(4),
-        quantity: 10,
-        price: 64.99
+    @category.products.create!(
+      name:  Faker::Hipster.sentence(3),
+      description: Faker::Hipster.paragraph(4),
+      image: open_asset('apparel1.jpg'),
+      quantity: 10,
+      price: 64.99
       )
-    end
   end
 
-  scenario "They see details for a specifc product" do
-    # ACT
+  scenario "They can click on one of many products to go to show product page" do
     visit root_path
-
-    # DEBUG
+    #Since link_to gets converted to <a> tags in HTML
+    page.all(".product a")[0].click
+    expect(page).to have_css('.container')
     save_screenshot
-
-    # VERIFY
-    expect(page).to have_css 'article.product'
   end
+
 end

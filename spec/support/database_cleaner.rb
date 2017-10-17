@@ -1,4 +1,4 @@
-ste the following code into it (taken from DatabaseCleaner's README):
+ste the following code into it (taken from DatabaseCleaners README):
 
 RSpec.configure do |config|
 
@@ -11,8 +11,8 @@ RSpec.configure do |config|
 
         During testing, the app-under-test that the browser driver connects to
         uses a different database connection to the database connection used by
-        the spec. The app's database connection would not be able to access
-        uncommitted transaction data setup over the spec's database connection.
+        the spec. The apps database connection would not be able to access
+        uncommitted transaction data setup over the specs database connection.
       MSG
     end
     DatabaseCleaner.clean_with(:truncation)
@@ -23,7 +23,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each, type: :feature) do
-    # :rack_test driver's Rack app under test shares database connection
+    # :rack_test drivers Rack app under test shares database connection
     # with the specs, so continue to use transaction strategy for speed.
     driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
 
